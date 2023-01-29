@@ -10,6 +10,7 @@ import pandas as pd
 from dash import Dash, dcc, html, Input, Output
 from dash.exceptions import PreventUpdate
 
+
 # mgr_options = df["About"].unique()
 # #
 # app = dash.Dash()
@@ -107,6 +108,7 @@ from dash.dependencies import Input, Output
 
 import pandas as pd
 import plotly.express as px
+print(pd.__version__)
 app = dash.Dash(__name__)
 server = app.server
 df_bar = pd.read_csv("data.csv")
