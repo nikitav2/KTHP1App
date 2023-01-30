@@ -111,9 +111,9 @@ import plotly.express as px
 print(pd.__version__)
 app = dash.Dash(__name__)
 server = app.server
-df_bar = pd.read_csv("data.csv")
+df_bar = pd.read_csv("src/data.csv")
 columns = df_bar.columns.tolist()
-df = pd.read_csv("data2.csv")
+df = pd.read_csv("src/data2.csv")
 app.layout = html.Div(children=[
    # elements from the top of the page
    html.Div([
