@@ -116,8 +116,11 @@ print(pd.__version__)
 app = dash.Dash(__name__)
 server = app.server
 df_bar = pd.read_csv("../src/data.csv")
+# df_bar = pd.read_csv("src/data.csv")
+
 columns = df_bar.columns.tolist()
 df = pd.read_csv("../src/data2.csv")
+# df = pd.read_csv("src/data2.csv")
 app.layout = html.Div(children=[
    # elements from the top of the page
    html.Div([
@@ -140,7 +143,7 @@ app.layout = html.Div(children=[
                {'label': "Statistical", 'value': "Statistical"},
                {'label' : "Visualization", 'value' : "Visualization"},],
            multi=True,
-           placeholder="Select The Traits That You Want To Compare Between The Group",
+           placeholder="Select The Skills That You Want To Compare Between The Group",
            # value = 'Mathematics'
        ),
 
@@ -172,7 +175,7 @@ dcc.Dropdown(
 html.Div([]),
    # New Div for all elements in the new 'row' of the page
    html.Div([
-      html.H1(children='Students Grouped By Interests and Their Skill Ranking', style={'textAlign': 'center'}),
+      html.H1(children='Students Grouped By Interests and Ranked By Total Skills', style={'textAlign': 'center'}),
 
         #  dcc.Dropdown(
         #     id="dropdown",
@@ -198,7 +201,7 @@ html.Div([]),
         dcc.Graph(
          id='graph4',
           # figure = fig2
-      ), html.H1(children='Strengths of The Group Compared To Each Other Strength', style={'textAlign': 'center'}),dcc.Graph(
+      ), html.H1(children='Skill Comparision Between Members of the Group', style={'textAlign': 'center'}),dcc.Graph(
          id='graph3',
           # figure = fig2
       ),
@@ -256,14 +259,14 @@ def update_graph(value,  value2, value3, value4):
 
                                                           })
     fig.update_layout(
-        title="Participants Rankings of Their Skills" ,title_x=0.5,
+        title="Skills Ranking Per Alias" ,title_x=0.5,
         xaxis_title="Alias",
         yaxis_title="Ranking (Each Category Out of 10)",
         legend_title="Legend",
     )
     d = df.copy().fillna(0)
     d['Total Sum of All Skills'] = d[[col for col in ['Visualization','Statistical','Mathematics','Artistic','Computer','Programming','Graphics','Human-computer','Evaluation','Communication','Collaboration','Repository']]].sum(axis=1)
-    fig2 = px.treemap(d, path=[px.Constant('world'), 'About', 'Alias', "Visualization"],
+    fig2 = px.treemap(d, path=[px.Constant('world'), 'About', 'Alias', "Total Sum of All Skills"],
                       color='Total Sum of All Skills')
     if value3 != None:
 
