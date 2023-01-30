@@ -284,7 +284,7 @@ def update_graph(value,  value2, value3, value4):
         fig3 = px.scatter_matrix(d2, dimensions=['Visualization','Statistical','Mathematics','Artistic','Computer','Programming','Graphics','Human-computer','Evaluation','Communication','Collaboration','Repository'],
                                 color="Alias")
         fig4 = px.sunburst(d2, path=['About', 'Alias'])
-    fig3.update_layout(title="Fake Islands Populations")
+
     fig3.update_layout(
                       dragmode='select',
                       width=1500,
