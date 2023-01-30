@@ -108,12 +108,16 @@ from dash.dependencies import Input, Output
 
 import pandas as pd
 import plotly.express as px
+
+
+# get current working directory
+
 print(pd.__version__)
 app = dash.Dash(__name__)
 server = app.server
-df_bar = pd.read_csv("src/data.csv")
+df_bar = pd.read_csv("../src/data.csv")
 columns = df_bar.columns.tolist()
-df = pd.read_csv("src/data2.csv")
+df = pd.read_csv("../src/data2.csv")
 app.layout = html.Div(children=[
    # elements from the top of the page
    html.Div([
